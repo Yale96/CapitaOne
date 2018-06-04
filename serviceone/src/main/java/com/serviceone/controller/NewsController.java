@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Yannick van Leeuwen
  */
 @RestController
-@RequestMapping("users")
+@RequestMapping("news")
 public class NewsController {
     
     private NewsRepository newsRepository;
