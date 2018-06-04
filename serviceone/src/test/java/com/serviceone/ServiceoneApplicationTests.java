@@ -1,4 +1,4 @@
-package com.serviceone.serviceone;
+package com.serviceone;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -7,13 +7,15 @@ package com.serviceone.controller;
 
 import com.serviceone.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Yannick van Leeuwen
  */
-@RestController(value = "news")
+@RestController
+@RequestMapping("users")
 public class NewsController {
     
     private NewsRepository newsRepository;

@@ -6,13 +6,15 @@
 package com.serviceone.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Yannick van Leeuwen
  */
-@RestController(value = "subjects")
+@RestController
+@RequestMapping("subjects")
 public class SubjectController {
     
     private SubjectController subjectController;
