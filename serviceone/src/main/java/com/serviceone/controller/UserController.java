@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,8 +29,15 @@ public class UserController {
         this.userRepository = userRepository;
     }
     
+    // TEST URL: http://localhost:8090/users
     @RequestMapping(method = RequestMethod.GET)
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+    
+    //TEST URL: http://localhost:8090/users/login?name=Yannick&password=Yannick
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public boolean login(@RequestParam("name") String name, @RequestParam("password") String password) {
+        return userRepository.login(name, password) != null;
     }
 }
