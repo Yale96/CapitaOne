@@ -27,6 +27,7 @@ public class News implements Serializable {
     private int ageLimit;
     
     @NotNull
+    @OneToOne
     private Subject subject;
     
     public News()

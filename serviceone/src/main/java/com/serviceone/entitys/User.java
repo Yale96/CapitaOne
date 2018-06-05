@@ -35,6 +35,7 @@ public class User implements Serializable {
     @NotNull
     private int age;
     
+    @OneToMany
     private List<News> followingNews;
     
     public User()

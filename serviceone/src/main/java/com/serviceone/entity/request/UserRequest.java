@@ -24,12 +24,7 @@ public class UserRequest {
     
     public void createData()
     {
-        User yannick = new User("Yannick", "yannickvanleeuwen@i-lion.nl", "Yannick", 21);
-        User dennis = new User("Dennis", "dennisvanleeuwen@i-lion.nl", "Dennis", 19);
-        User max = new User("Max", "maxvanleeuwen@i-lion.nl", "Max", 15);
-        users.add(yannick);
-        users.add(dennis);
-        users.add(max);
+        
     }
     
     public void addUser(String name, String mail, String password, int age)

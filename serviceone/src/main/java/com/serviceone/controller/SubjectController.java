@@ -5,6 +5,7 @@
  */
 package com.serviceone.controller;
 
+import com.serviceone.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("subjects")
 public class SubjectController {
     
-    private SubjectController subjectController;
+    private SubjectRepository subjectController;
     
     @Autowired
-    public SubjectController(SubjectController subjectController){
+    public SubjectController(SubjectRepository subjectController){
         this.subjectController = subjectController;
     }
 }
