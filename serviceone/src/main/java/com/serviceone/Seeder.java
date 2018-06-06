@@ -39,9 +39,9 @@ public class Seeder implements ApplicationRunner{
 
     @Override
     public void run(ApplicationArguments aa) {
-        Subject subjectOne = new Subject("Een", "Eerste Subject");
-        Subject subjectTwo = new Subject("Twee", "Tweede subject");
-        Subject subjectThree = new Subject("Drie", "Derde subject");
+        Subject subjectOne = new Subject("Een", "EersteSubject");
+        Subject subjectTwo = new Subject("Twee", "Tweedesubject");
+        Subject subjectThree = new Subject("Drie", "Derdesubject");
         subjectRepository.save(subjectOne);
         subjectRepository.save(subjectTwo);
         subjectRepository.save(subjectThree);

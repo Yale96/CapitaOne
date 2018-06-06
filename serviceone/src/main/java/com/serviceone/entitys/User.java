@@ -99,6 +99,10 @@ public class User implements Serializable {
     public void setFollowingNews(List<News> followingNews) {
         this.followingNews = followingNews;
     }
+
+    public void addNews(News n) {
+        this.getFollowingNews().add(n);
+    }
     
     
 }

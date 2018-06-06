@@ -9,6 +9,7 @@ import com.serviceone.entitys.News;
 import com.serviceone.entitys.User;
 import com.serviceone.repository.NewsRepository;
 import com.serviceone.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private UserRepository userRepository;
+    private NewsRepository newsRepository;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, NewsRepository newsRepository) {
         this.userRepository = userRepository;
+        this.newsRepository = newsRepository;
     }
     
     // TEST URL: http://localhost:8090/users
@@ -55,5 +58,11 @@ public class UserController {
         return u;
     }
     
-    
+//     //TEST URL: http://localhost:8090/users/addNewsToUser?name=Yannick&subject=Tweede
+//    @RequestMapping(value = "/addNewsToUser", method = RequestMethod.POST)
+//    public User subscribeToNews(@RequestParam("name") String name, @RequestParam("subject") String subject) {
+//        User u = userRepository.findByName(name);
+//        News n = newsRepository.findNewsBySubject(subject);
+//        return userRepository.insertNews(n);
+//    }
 }
