@@ -58,11 +58,13 @@ public class UserController {
         return u;
     }
     
-//     //TEST URL: http://localhost:8090/users/addNewsToUser?name=Yannick&subject=Tweede
-//    @RequestMapping(value = "/addNewsToUser", method = RequestMethod.POST)
-//    public User subscribeToNews(@RequestParam("name") String name, @RequestParam("subject") String subject) {
-//        User u = userRepository.findByName(name);
-//        News n = newsRepository.findNewsBySubject(subject);
-//        return userRepository.insertNews(n);
-//    }
+     //TEST URL: http://localhost:8090/users/addNewsToUser?name=Yannick&subject=Tweede
+    @RequestMapping(value = "/addNewsToUser", method = RequestMethod.POST)
+    public User subscribeToNews(@RequestParam("name") String name, @RequestParam("subject") String subject) {
+        User u = userRepository.findOne(userRepository.findByName(name).getId());
+        News n = newsRepository.findNewsBySubject(subject);
+        u.getFollowingNews().add(n);
+        userRepository.save(u);
+        return u;
+    }
 }

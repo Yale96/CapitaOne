@@ -2,7 +2,10 @@ package com.serviceone.repository;
 
 import com.serviceone.entitys.News;
 import com.serviceone.entitys.User;
+import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,7 +19,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
     @Query("SELECT u FROM User u WHERE LOWER(u.name) = LOWER(:name)")
     public User findByName(@Param("name") String name);
-
-//    @Query("INSERT INTO User(followingNews) VALUES(news)")
-//    public User insertNews(@Param("news") News n);
 }

@@ -100,8 +100,11 @@ public class User implements Serializable {
         this.followingNews = followingNews;
     }
 
-    public void addNews(News n) {
+    public List<News> addNews(News n) {
+        List<News> returnList = new ArrayList<News>();
         this.getFollowingNews().add(n);
+        returnList = getFollowingNews();
+        return returnList;
     }
     
     
