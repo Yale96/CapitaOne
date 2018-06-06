@@ -40,4 +40,6 @@ public class UserController {
     public boolean login(@RequestParam("name") String name, @RequestParam("password") String password) {
         return userRepository.login(name, password) != null;
     }
+    
+    
 }
