@@ -22,11 +22,6 @@ public class UserRequest {
         users = new ArrayList<User>();
     }
     
-    public void createData()
-    {
-        
-    }
-    
     public void addUser(String name, String mail, String password, int age)
     {
         User u = new User(name, mail, password, age);

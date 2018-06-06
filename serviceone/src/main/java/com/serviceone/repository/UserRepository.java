@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     
-    @Query("SELECT u FROM User u WHERE LOWER(u.name) = LOWER(:name) AND LOWER(u.password) = LOWER(:password)")
-    public User login(@Param("name") String name, @Param("password") String password);   
+    @Query("SELECT u FROM User u WHERE LOWER(u.mail) = LOWER(:mail) AND LOWER(u.password) = LOWER(:password)")
+    public User login(@Param("mail") String mail, @Param("password") String password);
 }

@@ -6,8 +6,11 @@
 package com.serviceone.repository;
 
 import com.serviceone.entitys.News;
+import com.serviceone.entitys.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -15,4 +18,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface NewsRepository extends JpaRepository<News, Long> {
     
+    @Query("SELECT n FROM News n WHERE LOWER(n.subject.naam) = LOWER(:naam)")
+    public News findNewsBySubject(@Param("naam") String naam);
 }

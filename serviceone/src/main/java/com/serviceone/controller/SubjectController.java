@@ -5,9 +5,12 @@
  */
 package com.serviceone.controller;
 
+import com.serviceone.entitys.Subject;
 import com.serviceone.repository.SubjectRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,5 +26,11 @@ public class SubjectController {
     @Autowired
     public SubjectController(SubjectRepository subjectController){
         this.subjectController = subjectController;
+    }
+    
+    // TEST URL: http://localhost:8090/news
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Subject> findAllUsers() {
+        return subjectController.findAll();
     }
 }

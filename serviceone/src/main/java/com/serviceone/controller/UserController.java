@@ -5,7 +5,9 @@
  */
 package com.serviceone.controller;
 
+import com.serviceone.entitys.News;
 import com.serviceone.entitys.User;
+import com.serviceone.repository.NewsRepository;
 import com.serviceone.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +39,20 @@ public class UserController {
     
     //TEST URL: http://localhost:8090/users/login?name=Yannick&password=Yannick
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public boolean login(@RequestParam("name") String name, @RequestParam("password") String password) {
-        return userRepository.login(name, password) != null;
+    public boolean login(@RequestParam("mail") String mail, @RequestParam("password") String password) {
+        return userRepository.login(mail, password) != null;
+    }
+    
+    //TEST URL: http://localhost:8090/users/register?name=test&mail=test@test.nl&password=test&age=21
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public User register(@RequestParam("name") String name, @RequestParam("mail") String mail, @RequestParam("password") String password, @RequestParam("age") int age) {
+        User u = new User();
+        u.setName(name);
+        u.setMail(mail);
+        u.setPassword(password);
+        u.setAge(age);
+        userRepository.save(u);
+        return u;
     }
     
     
