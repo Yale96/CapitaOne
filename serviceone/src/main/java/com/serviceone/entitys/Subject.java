@@ -6,9 +6,13 @@
 package com.serviceone.entitys;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,9 +33,12 @@ public class Subject implements Serializable {
     @NotNull
     private String omschrijving;
     
+    @ManyToMany
+    private List<User> followers;
+    
     public Subject()
     {
-        
+        followers = new ArrayList<>();
     }
     
     public Subject(String naam, String omschrijving)

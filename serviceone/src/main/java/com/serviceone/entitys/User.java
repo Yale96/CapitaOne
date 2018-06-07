@@ -35,12 +35,12 @@ public class User implements Serializable {
     @NotNull
     private int age;
     
-    @OneToMany
-    private List<News> followingNews;
+    @ManyToMany
+    private List<Subject> followingSubjects;
     
     public User()
     {
-        followingNews = new ArrayList<News>();
+        followingSubjects = new ArrayList<Subject>();
     }
     
     public User(String name, String mail, String password, int age)
@@ -49,7 +49,7 @@ public class User implements Serializable {
         this.mail = mail;
         this.password = password;
         this.age = age;
-        followingNews = new ArrayList<News>();
+        followingSubjects = new ArrayList<Subject>();
     }
     
     public long getId() {
@@ -92,18 +92,18 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public List<News> getFollowingNews() {
-        return followingNews;
+    public List<Subject> getFollowingSubjects() {
+        return followingSubjects;
     }
 
-    public void setFollowingNews(List<News> followingNews) {
-        this.followingNews = followingNews;
+    public void setFollowingSubjects(List<Subject> followingSubjects) {
+        this.followingSubjects = followingSubjects;
     }
 
-    public List<News> addNews(News n) {
-        List<News> returnList = new ArrayList<News>();
-        this.getFollowingNews().add(n);
-        returnList = getFollowingNews();
+    public List<Subject> addSubject(Subject n) {
+        List<Subject> returnList = getFollowingSubjects();
+        returnList.add(n);
+        setFollowingSubjects(returnList);
         return returnList;
     }
     

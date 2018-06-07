@@ -28,9 +28,9 @@ public class SubjectController {
         this.subjectController = subjectController;
     }
     
-    // TEST URL: http://localhost:8090/news
+    // TEST URL: http://localhost:8090/subjects
     @RequestMapping(method = RequestMethod.GET)
-    public List<Subject> findAllUsers() {
+    public List<Subject> findAllSubjects() {
         return subjectController.findAll();
     }
 }

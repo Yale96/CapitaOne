@@ -5,9 +5,9 @@
  */
 package com.serviceone.controller;
 
-import com.serviceone.entitys.News;
+import com.serviceone.entitys.Subject;
 import com.serviceone.entitys.User;
-import com.serviceone.repository.NewsRepository;
+import com.serviceone.repository.SubjectRepository;
 import com.serviceone.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private UserRepository userRepository;
-    private NewsRepository newsRepository;
+    private SubjectRepository subjectRepository;
 
     @Autowired
-    public UserController(UserRepository userRepository, NewsRepository newsRepository) {
+    public UserController(UserRepository userRepository, SubjectRepository subjectRepository) {
         this.userRepository = userRepository;
-        this.newsRepository = newsRepository;
+        this.subjectRepository = subjectRepository;
     }
     
     // TEST URL: http://localhost:8090/users
@@ -58,13 +58,14 @@ public class UserController {
         return u;
     }
     
-     //TEST URL: http://localhost:8090/users/addNewsToUser?name=Yannick&subject=Tweede
-    @RequestMapping(value = "/addNewsToUser", method = RequestMethod.POST)
+     //TEST URL: http://localhost:8090/users/addSubjectToUser?name=Yannick&subject=Twee
+    @RequestMapping(value = "/addSubjectToUser", method = RequestMethod.POST)
     public User subscribeToNews(@RequestParam("name") String name, @RequestParam("subject") String subject) {
         User u = userRepository.findOne(userRepository.findByName(name).getId());
-        News n = newsRepository.findNewsBySubject(subject);
-        u.getFollowingNews().add(n);
+        Subject s = subjectRepository.findOne(subjectRepository.findByName(subject).getId());
+        u.addSubject(s);
         userRepository.save(u);
+        String ss = "Debug";
         return u;
     }
 }

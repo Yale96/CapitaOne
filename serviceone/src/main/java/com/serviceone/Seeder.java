@@ -5,10 +5,8 @@
  */
 package com.serviceone;
 
-import com.serviceone.entitys.News;
 import com.serviceone.entitys.Subject;
 import com.serviceone.entitys.User;
-import com.serviceone.repository.NewsRepository;
 import com.serviceone.repository.SubjectRepository;
 import com.serviceone.repository.UserRepository;
 import java.util.ArrayList;
@@ -26,14 +24,12 @@ import org.springframework.stereotype.Component;
 public class Seeder implements ApplicationRunner{
     
     private UserRepository userRepository;
-    private NewsRepository newsRepository;
     private SubjectRepository subjectRepository;
     
     @Autowired
-    public Seeder(UserRepository userRepository, NewsRepository newsRepository, SubjectRepository subjectRepository)
+    public Seeder(UserRepository userRepository, SubjectRepository subjectRepository)
     {
         this.userRepository = userRepository;
-        this.newsRepository = newsRepository;
         this.subjectRepository = subjectRepository;
     }
 
@@ -46,28 +42,21 @@ public class Seeder implements ApplicationRunner{
         subjectRepository.save(subjectTwo);
         subjectRepository.save(subjectThree);
         
-        News newsOne = new News("Nieuwsbericht 1", 18, subjectOne);
-        News newsTwo = new News("Nieuwsbericht 2", 5, subjectTwo);
-        News newsThree = new News("Nieuwsbericht 3", 10, subjectThree);
-        newsRepository.save(newsOne);
-        newsRepository.save(newsTwo);
-        newsRepository.save(newsThree);
-        
         User yannick = new User("Yannick", "yannickvanleeuwen@i-lion.nl", "Yannick", 21);
         User dennis = new User("Dennis", "dennisvanleeuwen@i-lion.nl", "Dennis", 19);
         User max = new User("Max", "maxvanleeuwen@i-lion.nl", "Max", 15);
         
-        List<News> newsYannick = new ArrayList<News>();
-        List<News> newsDennis = new ArrayList<News>();
-        List<News> newsMax = new ArrayList<News>();
+        List<Subject> subjectsYannick = new ArrayList<Subject>();
+        List<Subject> subjectsDennis = new ArrayList<Subject>();
+        List<Subject> subjectsMax = new ArrayList<Subject>();
         
-        newsYannick.add(newsOne);
-        newsDennis.add(newsTwo);
-        newsMax.add(newsThree);
+        subjectsYannick.add(subjectOne);
+        subjectsDennis.add(subjectTwo);
+        subjectsMax.add(subjectThree);
         
-        yannick.setFollowingNews(newsYannick);
-        dennis.setFollowingNews(newsDennis);
-        max.setFollowingNews(newsMax);
+        yannick.setFollowingSubjects(subjectsYannick);
+        dennis.setFollowingSubjects(subjectsDennis);
+        max.setFollowingSubjects(subjectsMax);
         
         userRepository.save(yannick);
         userRepository.save(dennis);
