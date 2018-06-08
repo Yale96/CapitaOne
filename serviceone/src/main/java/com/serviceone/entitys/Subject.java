@@ -33,6 +33,9 @@ public class Subject implements Serializable {
     @NotNull
     private String omschrijving;
     
+    @NotNull
+    private int ageLimit;
+    
     @ManyToMany
     private List<User> followers;
     
@@ -41,10 +44,11 @@ public class Subject implements Serializable {
         followers = new ArrayList<>();
     }
     
-    public Subject(String naam, String omschrijving)
+    public Subject(String naam, String omschrijving, int age)
     {
         this.naam = naam;
         this.omschrijving = omschrijving;
+        this.ageLimit = age;
     }
 
     public long getId() {
@@ -55,6 +59,24 @@ public class Subject implements Serializable {
         this.id = id;
     }
 
+    public int getAgeLimit() {
+        return ageLimit;
+    }
+
+    public void setAgeLimit(int ageLimit) {
+        this.ageLimit = ageLimit;
+    }
+
+    public List<User> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(List<User> followers) {
+        this.followers = followers;
+    }
+    
+    
+    
     public String getNaam() {
         return naam;
     }

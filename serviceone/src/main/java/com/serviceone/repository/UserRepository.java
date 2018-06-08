@@ -1,5 +1,6 @@
 package com.serviceone.repository;
 
+import com.serviceone.entitys.Subject;
 import com.serviceone.entitys.User;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -18,6 +19,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE LOWER(u.name) = LOWER(:name)")
     public User findByName(@Param("name") String name);
+    
+     @Query("SELECT u.followingSubjects FROM User u WHERE LOWER(u.name) = LOWER(:name)")
+    public List<Subject> getAllSubjectsPerUserFromOne(@Param("name") String name);
 
     
 }

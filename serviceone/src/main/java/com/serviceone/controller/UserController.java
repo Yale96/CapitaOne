@@ -68,4 +68,12 @@ public class UserController {
         String ss = "Debug";
         return u;
     }
+    
+    // TEST URL: http://localhost:8090/users/getAllByName?naam=Yannick
+    @RequestMapping(value = "/getAllByName", method = RequestMethod.GET)
+    public List<Subject> getAllFromOneByName(@RequestParam("naam") String naam) {
+        return userRepository.getAllSubjectsPerUserFromOne(naam);
+    }
+    
+    
 }

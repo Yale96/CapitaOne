@@ -22,9 +22,9 @@ public class SubjectRequest {
         subjects = new ArrayList<>();
     }
     
-    public void addSubject(String naam, String omschrijving)
+    public void addSubject(String naam, String omschrijving, int age)
     {
-        Subject s = new Subject(naam, omschrijving);
+        Subject s = new Subject(naam, omschrijving, age);
         subjects.add(s);
     }
     

@@ -35,12 +35,14 @@ public class Seeder implements ApplicationRunner{
 
     @Override
     public void run(ApplicationArguments aa) {
-        Subject subjectOne = new Subject("Een", "EersteSubject");
-        Subject subjectTwo = new Subject("Twee", "Tweedesubject");
-        Subject subjectThree = new Subject("Drie", "Derdesubject");
+        Subject subjectOne = new Subject("Een", "EersteSubject", 5);
+        Subject subjectTwo = new Subject("Twee", "Tweedesubject", 5);
+        Subject subjectThree = new Subject("Drie", "Derdesubject", 5);
+        Subject subjectFour = new Subject("Vier", "VierdeSubject", 5);
         subjectRepository.save(subjectOne);
         subjectRepository.save(subjectTwo);
         subjectRepository.save(subjectThree);
+        subjectRepository.save(subjectFour);
         
         User yannick = new User("Yannick", "yannickvanleeuwen@i-lion.nl", "Yannick", 21);
         User dennis = new User("Dennis", "dennisvanleeuwen@i-lion.nl", "Dennis", 19);
