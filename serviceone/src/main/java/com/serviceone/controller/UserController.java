@@ -72,6 +72,17 @@ public class UserController {
         return u;
     }
     
+    //TEST URL: http://localhost:8090/users/removeSubjectFromUser?name=Yannick&subject=Twee
+    @RequestMapping(value = "/removeSubjectFromUser", method = RequestMethod.POST)
+    public User unsubscribeToNews(@RequestParam("name") String name, @RequestParam("subject") String subject) {
+        User u = userRepository.findOne(userRepository.findByName(name).getId());
+        Subject s = subjectRepository.findOne(subjectRepository.findByName(subject).getId());
+        u.removeSubject(s);
+        userRepository.save(u);
+        String ss = "Debug";
+        return u;
+    }
+    
     // TEST URL: http://localhost:8090/users/getAllByName?naam=Yannick
     @RequestMapping(value = "/getAllByName", method = RequestMethod.GET)
     public List<Subject> getAllFromOneByName(@RequestParam("naam") String naam) {
