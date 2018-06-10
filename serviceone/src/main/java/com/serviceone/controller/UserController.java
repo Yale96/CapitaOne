@@ -12,6 +12,7 @@ import com.serviceone.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Yannick van Leeuwen
  */
 @RestController
+ @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("users")
 public class UserController {
 
@@ -41,9 +43,10 @@ public class UserController {
     }
     
     //TEST URL: http://localhost:8090/users/login?name=Yannick&password=Yannick
+    //@CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public boolean login(@RequestParam("mail") String mail, @RequestParam("password") String password) {
-        return userRepository.login(mail, password) != null;
+    public boolean login(@RequestParam("name") String name, @RequestParam("password") String password) {
+        return userRepository.login(name, password) != null;
     }
     
     //TEST URL: http://localhost:8090/users/register?name=test&mail=test@test.nl&password=test&age=21
