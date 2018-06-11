@@ -21,4 +21,7 @@ public interface SubjectRepository extends JpaRepository<Subject, Long>{
     
     @Query("SELECT s FROM Subject s WHERE LOWER(s.naam) = LOWER(:naam)")
     public Subject findByName(@Param("naam") String name);
+
+    @Query("SELECT s FROM Subject s WHERE LOWER(s.naam) = LOWER(:naam)")
+    public Subject findSingleSubjectByNaam(@Param("naam") String naam);
 }
