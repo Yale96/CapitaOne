@@ -6,6 +6,7 @@
 package com.serviceone.repository;
 
 import com.serviceone.entitys.Subject;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -24,4 +25,7 @@ public interface SubjectRepository extends JpaRepository<Subject, Long>{
 
     @Query("SELECT s FROM Subject s WHERE LOWER(s.naam) = LOWER(:naam)")
     public Subject findSingleSubjectByNaam(@Param("naam") String naam);
+
+     @Query("SELECT s FROM Subject s WHERE LOWER(s.naam) = LOWER(:naam)")
+    public List<Subject> findSubjectByNaam(@Param("naam") String naam);
 }

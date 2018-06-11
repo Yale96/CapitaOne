@@ -5,9 +5,12 @@
  */
 package com.serviceone.entity.request;
 
+import com.serviceone.entitys.Subject;
 import com.serviceone.entitys.User;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -48,5 +51,26 @@ public class UserRequest {
             return true;
         }
         return false;
+    }
+
+    public List<Subject> getAllSubjectsPerUserFromThree(String name) {
+        RestTemplate restTemplate = new RestTemplate();
+        List<LinkedHashMap<String, Object>> subjectsMap = restTemplate.getForObject("http://localhost:8094/users/getAllSubsByName?naam=" + name, List.class);
+
+        List<Subject> returnList = new ArrayList<>();
+
+        if (subjectsMap != null) {
+            for (LinkedHashMap<String, Object> map : subjectsMap) {
+                System.out.println("Subject : naam=" + map.get("naam"));
+                String omschrijving = map.get("omschrijving").toString();
+                String naam = map.get("naam").toString();
+                int ageLimit = (int) map.get("ageLimit");
+                Subject s = new Subject(naam, omschrijving, ageLimit);
+                returnList.add(s);
+            }
+        } else {
+            System.out.println("No user exist----------");
+        }
+        return returnList;
     }
 }
